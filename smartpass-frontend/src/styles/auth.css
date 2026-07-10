@@ -1,0 +1,38 @@
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    background:#eef3ff;
+}
+
+.auth-container{
+    display:flex;
+    min-height:100vh;
+}
+
+.auth-left{
+    flex:1;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.auth-image{
+    width:75%;
+    max-width:500px;
+}
+
+.auth-right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:white;
+}
+
+.auth-card{
+    width:420px;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
