@@ -3,6 +3,8 @@ package com.smartPass.smartpass.controller;
 import com.smartPass.smartpass.dto.DashboardDTO;
 import com.smartPass.smartpass.service.DashboardService;
 import org.springframework.web.bind.annotation.*;
+import com.smartPass.smartpass.entity.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @RestController
 @RequestMapping("/api/dashboard")
@@ -17,9 +19,9 @@ public class DashboardController {
     }
 
     @GetMapping
-    public DashboardDTO getDashboardStats() {
+    public DashboardDTO getDashboardStats(@AuthenticationPrincipal User user) {
 
-        return dashboardService.getDashboardStats();
+        return dashboardService.getDashboardStats(user);
 
     }
 }

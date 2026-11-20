@@ -1,0 +1,27 @@
+@'
+# Node
+**/node_modules/
+**/dist/
+
+# Java
+**/target/
+**/*.class
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# Runtime uploads
+smartpass/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+'@ | Set-Content .gitignore
+
+.github/modernize/

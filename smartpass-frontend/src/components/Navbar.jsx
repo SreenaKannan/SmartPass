@@ -15,7 +15,7 @@ function Navbar() {
 
     return (
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <nav className="navbar navbar-expand-lg navbar-dark smart-navbar">
 
             <div className="container">
 
@@ -35,31 +35,33 @@ function Navbar() {
 
                 </Link>
 
-                <div>
+                <div className="d-flex align-items-center gap-1 flex-wrap justify-content-end">
 
                     <Link
-                        className="btn btn-light me-2"
+                        className="nav-link"
                         to="/dashboard"
                     >
                         Dashboard
                     </Link>
 
                     <Link
-                        className="btn btn-light me-2"
+                        className="nav-link"
                         to="/cards"
                     >
                         My Cards
                     </Link>
 
+                    <Link className="nav-link" to="/payments">Payments</Link>
+
                     <Link
-                        className="btn btn-light me-2"
-                        to="/payment"
+                        className="nav-link"
+                        to="/ai-hub"
                     >
-                        Payment
+                        🤖 AI Hub
                     </Link>
 
                     <button
-                        className="btn btn-danger"
+                        className="btn btn-light btn-sm ms-2 px-3"
                         onClick={logout}
                     >
                         Logout

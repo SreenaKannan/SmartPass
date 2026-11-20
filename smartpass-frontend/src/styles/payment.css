@@ -1,0 +1,67 @@
+.pay-shell { max-width: 1040px; }
+
+/* ---------- order summary ---------- */
+.order-summary { position: sticky; top: 1rem; }
+.order-summary .amount-line { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px dashed #dbe3ee; color: #52627a; }
+.order-summary .total-line { display: flex; justify-content: space-between; padding-top: .9rem; font-weight: 750; font-size: 1.25rem; color: #14213d; }
+.session-timer { display: inline-flex; align-items: center; gap: .4rem; font-variant-numeric: tabular-nums; font-weight: 650; padding: .3rem .7rem; border-radius: 99px; background: #eef6fd; color: #0759a3; }
+.session-timer.low { background: #fdecec; color: #b42318; }
+.secure-note { font-size: .8rem; color: #64748b; }
+
+/* ---------- method tabs ---------- */
+.pay-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-bottom: 1.25rem; }
+.pay-tab { border: 1.5px solid #dbe3ee; background: #fff; border-radius: .8rem; padding: .7rem .5rem; font-weight: 650; color: #52627a; transition: all .15s; }
+.pay-tab:hover { border-color: #0b71b8; color: #0759a3; }
+.pay-tab.active { border-color: #0759a3; background: #eef6fd; color: #0759a3; box-shadow: 0 0 0 3px rgba(7,89,163,.1); }
+.pay-tab span { display: block; font-size: 1.2rem; }
+
+.bank-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+.bank-option { border: 1.5px solid #dbe3ee; border-radius: .7rem; padding: .65rem .8rem; cursor: pointer; font-size: .9rem; display: flex; align-items: center; gap: .5rem; background: #fff; }
+.bank-option.active { border-color: #0759a3; background: #eef6fd; font-weight: 650; }
+.bank-option input { accent-color: #0759a3; }
+
+.brand-pill { font-size: .75rem; font-weight: 700; color: #0759a3; background: #eef6fd; border-radius: 99px; padding: .15rem .55rem; }
+
+.sandbox-note { background: #fff8e6; border: 1px solid #f3dd9a; color: #7a5a00; border-radius: .7rem; padding: .7rem .9rem; font-size: .82rem; }
+.sandbox-note code { background: rgba(0,0,0,.06); padding: .05rem .3rem; border-radius: .3rem; color: inherit; }
+
+/* ---------- OTP ---------- */
+.otp-input { text-align: center; letter-spacing: .6em; font-size: 1.6rem; font-weight: 700; padding-left: .6em; }
+
+/* ---------- processing ---------- */
+.processing { text-align: center; padding: 3.5rem 1rem; }
+.spinner-ring { width: 64px; height: 64px; border-radius: 50%; border: 5px solid #e3ecf6; border-top-color: #0759a3; margin: 0 auto 1.4rem; animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- receipt ---------- */
+.receipt { max-width: 520px; margin: 0 auto; }
+.receipt-head { text-align: center; padding: 1.4rem 1rem; border-radius: .9rem; margin-bottom: 1.2rem; }
+.receipt-head.ok { background: #e8f7ee; color: #146c43; }
+.receipt-head.bad { background: #fdecec; color: #b42318; }
+.receipt-head.muted { background: #eef1f5; color: #52627a; }
+.receipt-icon { width: 58px; height: 58px; border-radius: 50%; margin: 0 auto .7rem; display: grid; place-items: center; font-size: 1.8rem; font-weight: 700; background: currentColor; }
+.receipt-icon { color: inherit; position: relative; }
+.receipt-head.ok .receipt-icon { background: #146c43; color: #fff; }
+.receipt-head.bad .receipt-icon { background: #b42318; color: #fff; }
+.receipt-head.muted .receipt-icon { background: #8795a8; color: #fff; }
+.receipt-amount { font-size: 2rem; font-weight: 800; letter-spacing: -.02em; }
+.receipt-reason { font-size: .92rem; }
+.receipt-rows { margin: 0; }
+.receipt-row { display: flex; justify-content: space-between; gap: 1rem; padding: .6rem 0; border-bottom: 1px solid #edf1f6; }
+.receipt-row dt { color: #64748b; font-weight: 500; font-size: .88rem; }
+.receipt-row dd { margin: 0; font-weight: 650; text-align: right; font-size: .92rem; word-break: break-word; }
+.receipt-foot { text-align: center; color: #8795a8; font-size: .78rem; margin: 1rem 0 0; }
+
+.redirect-bar { height: 4px; background: #e3ecf6; border-radius: 99px; overflow: hidden; }
+.redirect-bar > div { height: 100%; background: #0759a3; transition: width 1s linear; }
+
+.due-card { border-left: 4px solid #f0a500; }
+
+/* ---------- print: receipt only ---------- */
+@media print {
+    .smart-navbar, .no-print { display: none !important; }
+    body, .page-shell { background: #fff !important; }
+    .receipt { box-shadow: none !important; max-width: 100%; }
+}
+
+@media (max-width: 991px) { .order-summary { position: static; } }

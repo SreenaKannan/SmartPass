@@ -32,10 +32,19 @@ public class AdminService {
     }
 
     public List<CommuterCard> getAllCards() {
-        return cardRepository.findAll();
+        return cardRepository.findAll().stream()
+            .filter(card -> paymentRepository.existsByCardIdAndStatus(card.getCardId(), "SUCCESS"))
+            .toList();
     }
 
     public List<Payment> getAllPayments() {
-        return paymentRepository.findAll();
+        return paymentRepository.findAll().stream()
+            .filter(payment -> "SUCCESS".equals(payment.getStatus()))
+            .toList();
     }
+    public String approveCard(Long id) { return setStatus(id, "Approved"); }
+    public String rejectCard(Long id) { return setStatus(id, "Rejected"); }
+    public String suspendCard(Long id) { return setStatus(id, "Suspended"); }
+    public String blockCard(Long id) { return setStatus(id, "Blocked"); }
+    private String setStatus(Long id, String status) { CommuterCard card=cardRepository.findById(id).orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(org.springframework.http.HttpStatus.NOT_FOUND,"Card not found")); card.setStatus(status); cardRepository.save(card); return "Card " + status.toLowerCase() + " successfully"; }
 }

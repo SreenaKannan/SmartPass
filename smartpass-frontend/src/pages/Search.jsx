@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../services/api";
+import Navbar from "../components/Navbar";
 
 function Search() {
 
@@ -29,7 +30,7 @@ function Search() {
 
     return (
 
-        <div className="container mt-5">
+        <><Navbar /><div className="container mt-5">
 
             <div className="card p-4">
 
@@ -104,7 +105,7 @@ function Search() {
 
             </div>
 
-        </div>
+        </div></>
 
     );
 }

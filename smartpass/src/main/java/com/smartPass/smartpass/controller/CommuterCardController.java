@@ -4,6 +4,8 @@ import com.smartPass.smartpass.entity.CommuterCard;
 import com.smartPass.smartpass.service.CommuterCardService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import com.smartPass.smartpass.entity.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 @RestController
 @RequestMapping("/api/cards")
 
@@ -19,36 +21,20 @@ public class CommuterCardController {
     }
 
     @PostMapping("/create")
-    public String createCard(
-            @RequestBody CommuterCard card) {
+    public CommuterCard createCard(@RequestBody CommuterCard card, @AuthenticationPrincipal User user) {
 
-        return cardService.createCard(card);
+        return cardService.createCard(card, user);
     }
 
     @GetMapping
-    public List<CommuterCard> getAllCards() {
-
-    return cardService.getAllCards();
-
-    }
+    public List<CommuterCard> getAllCards(@AuthenticationPrincipal User user) { return cardService.getMyCards(user); }
 
     @GetMapping("/{id}")
-    public CommuterCard getCardById(@PathVariable Long id) {
-
-    return cardService.getCardById(id);
-
-    }
-
-    @PutMapping("/renew/{id}")
-    public String renewCard(
-        @PathVariable Long id) {
-
-    return cardService.renewCard(id);
-
-    }
+    public CommuterCard getCardById(@PathVariable Long id, @AuthenticationPrincipal User user) { return cardService.getOwnedCard(id,user); }
 
     @DeleteMapping("/{id}")
-    public String deleteCard(@PathVariable Long id) {
+    public String deleteCard(@PathVariable Long id, @AuthenticationPrincipal User user) {
+    cardService.getOwnedCard(id,user);
 
     return cardService.deleteCard(id);
 
@@ -92,7 +78,8 @@ public String rejectCard(
     @PutMapping("/update/{id}")
 public String updateCard(
         @PathVariable Long id,
-        @RequestBody CommuterCard card) {
+        @RequestBody CommuterCard card, @AuthenticationPrincipal User user) {
+    cardService.getOwnedCard(id,user);
 
     return cardService.updateCard(id, card);
 }

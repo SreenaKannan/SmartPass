@@ -14,6 +14,8 @@ public class CommuterCard {
 
     private String userName;
 
+    private Long ownerId;
+
     private String sourceStation;
 
     private String destinationStation;
@@ -29,4 +31,11 @@ public class CommuterCard {
     private double fareAmount;
 
     private String status;
+
+    private Integer riskScore;
+    private String riskLevel;
+    @Column(length = 1500)
+    private String riskFlags;
+    @Column(length = 1500)
+    private String riskExplanation;
 }

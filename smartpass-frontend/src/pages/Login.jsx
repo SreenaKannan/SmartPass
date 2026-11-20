@@ -28,22 +28,16 @@ function Login() {
             login
         );
 
-        console.log(response);
-console.log(response.data);
-console.log(typeof response.data);
-
-alert(JSON.stringify(response.data));
-
-        if (response.data  === "Login Successful") {
-            navigate("/dashboard");
-        }
+        localStorage.setItem("smartpassToken", response.data.token);
+        localStorage.setItem("smartpassUser", JSON.stringify(response.data));
+        navigate(response.data.role === "ADMIN" ? "/admin" : "/dashboard");
 
     } catch (error) {
 
         console.log(error);
 
         if (error.response) {
-            alert(error.response.data);
+            alert(error.response.data?.message || "Login failed. Check your email and password.");
         } else {
             alert("Login Failed");
         }
@@ -68,7 +62,7 @@ alert(JSON.stringify(response.data));
     />
 </div>
                         <h2 className="text-center mb-4">
-                            User Login
+                            SmartPass Login
                         </h2>
 
                         <input

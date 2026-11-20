@@ -14,6 +14,9 @@ public interface CommuterCardRepository
     long countByStatus(String status);
 
     List<CommuterCard> findByUserName(String userName);
+    List<CommuterCard> findByOwnerId(Long ownerId);
+    long countByOwnerId(Long ownerId);
+    List<CommuterCard> findByStatus(String status);
     List<CommuterCard> findByExpiryDateBetween(
         LocalDate startDate,
         LocalDate endDate);

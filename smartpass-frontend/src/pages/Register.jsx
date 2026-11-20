@@ -40,7 +40,7 @@ function Register() {
             console.log(error);
 
             if (error.response) {
-                alert(error.response.data);
+                alert(error.response.data?.message || "Registration failed. Please try again.");
             } else {
                 alert("Registration Failed");
             }
